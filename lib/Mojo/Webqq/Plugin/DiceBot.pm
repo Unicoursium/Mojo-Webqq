@@ -2,21 +2,25 @@ package Mojo::Webqq::Plugin::DiceBot;
 use POSIX qw(strftime);
 use Encode;
 use List::Util qw(first);
+use Cwd;
+use DateTime;
 use Inline "Lua" => <<EOLUA;
-function script_path() 
-    -- remember to strip off the starting @ 
-    return debug.getinfo(2, "S").source:sub(2) 
+function lua_load(path)
+	path=path:match(".*/")
+	package.path=path.."luascript/?.lua"
+	a,b=loadfile(path.."/main.lua")
+	print(b,"test from lua", main)
+	a()
 end
-print(script_path())
-a,b=loadfile("main.lua")
-print(b,"test from lua", main)
-a()
 
-function luamain(sayf, msg)
-	main(sayf, msg, "TIME", "BUDDY", "BUDDY_NUM", "QUN" ,"QUN_NUM")
+function lua_main(sayf, msg,time,buddy)
+	main(sayf, msg, time, buddy, "BUDDY_NUM", "QUN" ,"QUN_NUM")
 end
 
 EOLUA
+
+lua_load($INC{"Mojo/Webqq/Plugin/DiceBot.pm"});
+
 #my $api = 'http://www.tuling123.com/openapi/api';
 my %ban;
 my @limit_reply = (
@@ -100,12 +104,14 @@ sub call{
 #            $reply = $client->truncate($reply,max_bytes=>500,max_lines=>10) if ($msg->type eq 'group_message' and $data->{is_truncate_reply});
 #            $client->reply_message($msg,$reply,sub{$_[1]->msg_from("bot")}) if $reply;
 #        });
-		luamain(sub{
+		$dt = DateTime->from_epoch(epoch => $msg->msg_time);
+		$dt -> add( hours => 8); #timezone +8
+		lua_main(sub{
 			my $arg = shift;
 			$client->reply_message($msg,$arg,sub{$_[1]->msg_from("bot")});
-		},$input);
+		},$input,$dt->hms,$msg->sender->nick);
 		if ($msg->is_at) {
-			$client->reply_message($msg,"TestMessage",sub{$_[1]->msg_from("bot")});
+			$client->reply_message($msg,"en?",sub{$_[1]->msg_from("bot")});
 		}
     });
 }

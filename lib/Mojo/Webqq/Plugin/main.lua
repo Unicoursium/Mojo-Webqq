@@ -1,5 +1,5 @@
 --package.cpath=".\\luascript\\?.dll"
-package.path="./luascript/?.lua"
+print(package.path)
 
 main_help_table={
 "qqdicebot,第4版。开发者：BX。\n免责声明：本机器人提供的内容要么来自网上，要么来自一些会打字的大猩猩。对这些内容的真实可信性开发者概不负责。\n帮助链接：http://trow.cc/forum/index.php?showtopic=19753"
@@ -24,7 +24,7 @@ require"tishen"
 --require"escape"
 require"rememberip"
 require"TALK"
-require"seventhsea"
+--require"seventhsea"
 require"scp"
 --loadfile("luascript\\router.lua")()
 --loadfile("luascript\\rss.lua")()
@@ -33,16 +33,15 @@ function set_say(f)
 	say_qun=f
 end
 
-function lua_main(sayfunc,msg,msg_time,buddy_name,buddy_num,qun_name,qun_num)
+function main(sayfunc,msg,msg_time,buddy_name,buddy_num,qun_name,qun_num)
 	say_qun=sayfunc
-	if msg==nil then return end
 	--escape(msg,msg_time,buddy_name,buddy_num,qun_name,qun_num)
 	--bet(msg,msg_time,buddy_name,buddy_num,qun_name,qun_num)
 	--getlink(msg,msg_time,buddy_name,buddy_num,qun_name,qun_num)
 	roll(msg,msg_time,buddy_name,buddy_num,qun_name,qun_num)
 	dnddice(msg,msg_time,buddy_name,buddy_num,qun_name,qun_num)
 	--woddice(msg,msg_time,buddy_name,buddy_num,qun_name,qun_num)
-	seventhsea(msg,msg_time,buddy_name,buddy_num,qun_name,qun_num)
+	--seventhsea(msg,msg_time,buddy_name,buddy_num,qun_name,qun_num)
 	--dictionary(msg,msg_time,buddy_name,buddy_num,qun_name,qun_num)
 	--wiki(msg,msg_time,buddy_name,buddy_num,qun_name,qun_num)
 	--knight(msg,msg_time,buddy_name,buddy_num,qun_name,qun_num)
