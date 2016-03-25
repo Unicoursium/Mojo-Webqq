@@ -3,7 +3,8 @@ use POSIX qw(strftime);
 use Encode;
 use List::Util qw(first);
 use Cwd;
-use DateTime;
+use POSIX::strftime::GNU;
+use POSIX 'strftime';
 use Inline "Lua" => <<EOLUA;
 function lua_load(path)
 	path=path:match(".*/")
@@ -104,12 +105,13 @@ sub call{
 #            $reply = $client->truncate($reply,max_bytes=>500,max_lines=>10) if ($msg->type eq 'group_message' and $data->{is_truncate_reply});
 #            $client->reply_message($msg,$reply,sub{$_[1]->msg_from("bot")}) if $reply;
 #        });
-		$dt = DateTime->from_epoch(epoch => $msg->msg_time);
-		$dt -> add( hours => 8); #timezone +8
+
+		my $time =strftime("%H:%M:%S",localtime($msg->msg_time));
+		
 		lua_main(sub{
 			my $arg = shift;
 			$client->reply_message($msg,$arg,sub{$_[1]->msg_from("bot")});
-		},$input,$dt->hms,$msg->sender->nick);
+		},$input,$time,$msg->sender->nick);
 		if ($msg->is_at) {
 			$client->reply_message($msg,"en?",sub{$_[1]->msg_from("bot")});
 		}
