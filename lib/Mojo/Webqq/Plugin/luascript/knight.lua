@@ -5,13 +5,13 @@ local name="knight"
 local oldmsg2={}
 local oldmsg1={}
 reaction={
-"àÅ£¿Å¶\nÄã¡­¡­Äã´íÈºÁË£¡",
-"°¡£¿Å¶\nÏ¹ÁËÎÒµÄ¹·ÑÛ£¡",
-"°¡£¿Å¶\n¡­¡­",
-"°¡£¿Å¶\nÄã¡­¡­ÄãÃÇ²æ²æ½ç£¡",
-"°¡£¿Å¶\n¿ì·ÅÏÂÄÇ¸öÊ¦Ì«£¡",
-"( ¡Ñ o ¡Ñ )°¡£¡\n[buddy_name]×îÀ÷º¦ÁË£¡",
-"É¶£¿\n¡°²»Ğ¡ĞÄ¡±²ÈÁË[buddy_name]Ò»½Å¡£"
+"å—¯ï¼Ÿå“¦\nä½ â€¦â€¦ä½ é”™ç¾¤äº†ï¼",
+"å•Šï¼Ÿå“¦\nçäº†æˆ‘çš„ç‹—çœ¼ï¼",
+"å•Šï¼Ÿå“¦\nâ€¦â€¦",
+"å•Šï¼Ÿå“¦\nä½ â€¦â€¦ä½ ä»¬å‰å‰ç•Œï¼",
+"å•Šï¼Ÿå“¦\nå¿«æ”¾ä¸‹é‚£ä¸ªå¸ˆå¤ªï¼",
+"( âŠ™ o âŠ™ )å•Šï¼\n[buddy_name]æœ€å‰å®³äº†ï¼",
+"å•¥ï¼Ÿ\nâ€œä¸å°å¿ƒâ€è¸©äº†[buddy_name]ä¸€è„šã€‚"
 }
 function knight(msg,msg_time,buddy_name,buddy_num,qun_name,qun_num)
 	print(qun_num)
@@ -25,9 +25,9 @@ function knight(msg,msg_time,buddy_name,buddy_num,qun_name,qun_num)
 	if l_msg=="" then return end
 	local t_msg=trim(msg)
 	if oldmsg2[qun_num]==oldmsg1[qun_num] and oldmsg1[qun_num]==t_msg then
-		if t_msg=="¡­¡­" then say_qun("¡­¡­Nice Boat",qun_num) return end
-		local word_jie=string.match(l_msg,"ÄãÃÇ(.*)½ç")
-		if word_jie~=nil and string.match(l_msg,"ÄãÃÇ¶¼ÊÇ.*½çµÄ£¡")==nil then say_qun("ÄãÃÇ¶¼ÊÇ"..word_jie.."½çµÄ£¡",qun_num) return end
+		if t_msg=="â€¦â€¦" then say_qun("â€¦â€¦Nice Boat",qun_num) return end
+		local word_jie=string.match(l_msg,"ä½ ä»¬(.*)ç•Œ")
+		if word_jie~=nil and string.match(l_msg,"ä½ ä»¬éƒ½æ˜¯.*ç•Œçš„ï¼")==nil then say_qun("ä½ ä»¬éƒ½æ˜¯"..word_jie.."ç•Œçš„ï¼",qun_num) return end
 		oldmsg1[qun_num]="[Somethingthatwillnotrepeat]"
 		oldmsg2[qun_num]="[Somethingthatwillnotrepeat]"
 		say_qun(msg,qun_num)
@@ -39,33 +39,33 @@ function knight(msg,msg_time,buddy_name,buddy_num,qun_name,qun_num)
 	and
 		(
 			(
-			string.match(l_msg,"»¹ÊÇ") and
-				(string.match(l_msg,"°®") or string.match(l_msg,"Ï²»¶") or string.match(l_msg,"±È½ÏºÃ"))
+			string.match(l_msg,"è¿˜æ˜¯") and
+				(string.match(l_msg,"çˆ±") or string.match(l_msg,"å–œæ¬¢") or string.match(l_msg,"æ¯”è¾ƒå¥½"))
 			)
 		)
-	) then say_qun("/me ½ô½ô±§×¡"..buddy_name..":¡°ÎÒÕæÃ»ÓÃ£¬¾ÓÈ»ÈÃÄãÎÊ³öÕâÑùµÄÎÊÌâ¡­¡­¡±",qun_num) return end
+	) then say_qun("/me ç´§ç´§æŠ±ä½"..buddy_name..":â€œæˆ‘çœŸæ²¡ç”¨ï¼Œå±…ç„¶è®©ä½ é—®å‡ºè¿™æ ·çš„é—®é¢˜â€¦â€¦â€",qun_num) return end
 
 	if string.match(l_msg,name)==nil then return end
-	if string.match(l_msg,name.."%?")~=nil and tonumber(buddy_num)==241950376 then say_qun("àÅ£¿ÎÒ»ØÀ´ÁË£¡",qun_num) return end
-	if string.match(l_msg,name.."ÌÖÑá")~=nil and tonumber(buddy_num)==241950376 then say_qun("¡­¡­",qun_num) return end
-	if string.match(l_msg,name.."%?")~=nil and tonumber(buddy_num)==289828069 then say_qun("àÅ£¿²»ÏÓ·³Âğ£¿",qun_num) return end
-	if string.match(l_msg,name.."%?")~=nil or string.match(l_msg,name.."£¿")~=nil then
+	if string.match(l_msg,name.."%?")~=nil and tonumber(buddy_num)==241950376 then say_qun("å—¯ï¼Ÿæˆ‘å›æ¥äº†ï¼",qun_num) return end
+	if string.match(l_msg,name.."è®¨åŒ")~=nil and tonumber(buddy_num)==241950376 then say_qun("â€¦â€¦",qun_num) return end
+	if string.match(l_msg,name.."%?")~=nil and tonumber(buddy_num)==289828069 then say_qun("å—¯ï¼Ÿä¸å«Œçƒ¦å—ï¼Ÿ",qun_num) return end
+	if string.match(l_msg,name.."%?")~=nil or string.match(l_msg,name.."ï¼Ÿ")~=nil then
 		local choice=math.random(1,3)
-		if choice==1 then say_qun("àÅ£¿",qun_num) return
-		elseif choice==2 then say_qun("°¡£¿",qun_num) return
-		elseif choice==3 then say_qun("É¶£¿",qun_num) return
+		if choice==1 then say_qun("å—¯ï¼Ÿ",qun_num) return
+		elseif choice==2 then say_qun("å•Šï¼Ÿ",qun_num) return
+		elseif choice==3 then say_qun("å•¥ï¼Ÿ",qun_num) return
 		end
 	return end
-	if string.match(l_msg,"¸øÎÒ")~=nil and tonumber(buddy_num)==241950376 then say_qun("°¥£¡",qun_num) return end
+	if string.match(l_msg,"ç»™æˆ‘")~=nil and tonumber(buddy_num)==241950376 then say_qun("å“ï¼",qun_num) return end
 
-	if string.match(l_msg,"¸øÎÒ")~=nil then say_qun("Äã²»ÅÂ±»°²×Ğ×áÂğ£¿",qun_num) return end
-	if string.match(l_msg,"°²×ĞÏ²»¶ÄãÄã¶®Âğ")~=nil then say_qun("Õâ¸ö¿ÉÒÔ¶®¡£",qun_num) return end
-	if string.match(l_msg,"Äã¶®.*Âğ")~=nil then
-		if string.match(l_msg,"°²×Ğ")~=nil then say_qun("Õâ¸öÂï¡­¡­\n/me ¶İÁË",qun_num) return end
-		say_qun("/me ¹û¶Ï±íÊ¾²»¶®",qun_num) return
+	if string.match(l_msg,"ç»™æˆ‘")~=nil then say_qun("ä½ ä¸æ€•è¢«å®‰ä»”æå—ï¼Ÿ",qun_num) return end
+	if string.match(l_msg,"å®‰ä»”å–œæ¬¢ä½ ä½ æ‡‚å—")~=nil then say_qun("è¿™ä¸ªå¯ä»¥æ‡‚ã€‚",qun_num) return end
+	if string.match(l_msg,"ä½ æ‡‚.*å—")~=nil then
+		if string.match(l_msg,"å®‰ä»”")~=nil then say_qun("è¿™ä¸ªå˜›â€¦â€¦\n/me éäº†",qun_num) return end
+		say_qun("/me æœæ–­è¡¨ç¤ºä¸æ‡‚",qun_num) return
 	end
-	if string.match(l_msg,"Äã¶®Ã´")~=nil then say_qun("/me ¹û¶Ï±íÊ¾²»¶®",qun_num) return end
-	if string.match(l_msg,"¸øµã·´Ó¦£¡")~=nil then
+	if string.match(l_msg,"ä½ æ‡‚ä¹ˆ")~=nil then say_qun("/me æœæ–­è¡¨ç¤ºä¸æ‡‚",qun_num) return end
+	if string.match(l_msg,"ç»™ç‚¹ååº”ï¼")~=nil then
 		local result_str=reaction[math.random(1,table.maxn(reaction))]
 		result_str=string.gsub(result_str,"%[buddy_name%]",buddy_name)
 		say_qun(result_str,qun_num)
