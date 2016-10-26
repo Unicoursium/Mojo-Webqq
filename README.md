@@ -1,36 +1,57 @@
-Mojo-Webqq v1.7.6 [![Build Status](https://travis-ci.org/sjdy521/Mojo-Webqq.svg?branch=master)](https://travis-ci.org/sjdy521/Mojo-Webqq)
+Mojo-Webqq v1.8.7 [![Build Status](https://travis-ci.org/sjdy521/Mojo-Webqq.svg?branch=master)](https://travis-ci.org/sjdy521/Mojo-Webqq) [![Join the chat at https://gitter.im/sjdy521/Mojo-Webqq](https://badges.gitter.im/sjdy521/Mojo-Webqq.svg)](https://gitter.im/sjdy521/Mojo-Webqq?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 ========================
-使用Perl语言编写的Smartqq客户端框架，基于Mojolicious，要求Perl版本5.14+，可通过插件提供基于HTTP协议的api接口供其他语言或系统调用
+
+使用Perl语言编写的Smartqq客户端框架，基于Mojolicious，要求Perl版本5.10+，可通过插件提供基于HTTP协议的api接口供其他语言或系统调用
 
 ###郑重声明
 
-本项目完全遵循网页QQ官方提供的原始聊天功能，不包含任何破解、偷盗等行为，本项目完全开源，目的是为了促进技术交流学习，禁止任何商业盈利目的以及一切非法用途传播，否则后果自负
+本项目完全遵循网页QQ官方提供的原始聊天功能，不包含任何破解、盗号等行为，本项目完全开源，目的是为了促进技术交流学习，禁止任何商业盈利目的以及一切非法用途传播，否则后果自负
+
+###特色功能
+
+* 支持 群组踢人、禁言、设置/取消管理员、修改群成员名片、邀请好友入群、群签到
+* 支持 获取好友、群组、群成员的真实QQ号码
+* 支持 新增/失去好友、新增/退出群组、新增/失去群成员 等事件提醒（非实时）
+* 支持 Windows/Linux/Mac 多平台，支持docker镜像，易安装部署，不懂Perl也能用
+* 提供 基于HTTP协议的API接口 ，简洁丰富，方便和其他编程语言集成
+* 主人人品极好，你懂的
 
 ###插件列表
-``` 
-  名称                 优先级   当前状态    github作者    功能说明
-  ------------------------------------------------------------------------------
-  ShowMsg              100      已发布      sjdy521       打印客户端接收和发送的消息
-  GroupManage          100      已发布      sjdy521       群管理，入群欢迎、限制发图频率等
-  MsgSync              99       已发布      sjdy521       实现qq群和irc消息同步
-  IRCShell             99       已发布      sjdy521       Linux环境下通过irc客户端使用qq
-  Openqq               98       已发布      sjdy521       提供qq发送消息api接口
-  Perlcode             97       已发布      sjdy521       通过qq消息执行perl代码
-  Perldoc              96       已发布      sjdy521       通过qq消息查询perl文档
-  StockInfo            95       已发布      shalk         查询股票信息
-  ProgramCode          94       已发布      limengyu1990  通过qq消息执行代码，支持26种语言
-  Translation          93       已发布      sjdy521       多国语言翻译功能
-  MobileInfo           93       已发布      limengyu1990  手机号码归属地查询
-  Riddle               92       已发布      limengyu1990  输入"猜谜"关键字进行猜谜游戏
-  GasPrice             91       已发布      hyvinlam      输入"油价"关键字查询油价
-  KnowledgeBase        2        已发布      sjdy521       通过qq消息自定义问答知识库
-  FuckDaShen           1        已发布      sjdy521       对消息中的"大神"关键词进行鄙视
-  PostImgVerifycode    0        已发布      sjdy521       登录验证码发送到邮箱实现远程登录
-  PostQRcode           0        已发布      sjdy521       登录二维码发送到邮箱实现远程扫码
-  ShowQRcode           0        已发布      autodataming  调用系统图片查看程序来示二维码（仅支持win）
-  SmartReply           0        已发布      sjdy521       智能聊天回复
-```
+
+|名称                | 优先级  |当前状态    |github作者    | 功能说明                 
+|:-------------------|:--------|:-----------|:-------------|:----------------------------
+|[ShowMsg](https://metacpan.org/pod/distribution/Mojo-Webqq/doc/Webqq.pod#Mojo::Webqq::Plugin::ShowMsg)             |100      |已发布      |sjdy521       |打印客户端接收和发送的消息
+|[GroupManage](https://metacpan.org/pod/distribution/Mojo-Webqq/doc/Webqq.pod#Mojo::Webqq::Plugin::GroupManage)         |100      |已发布      |sjdy521       |群管理，入群欢迎、限制发图频率等
+|[MsgSync](https://metacpan.org/pod/distribution/Mojo-Webqq/doc/Webqq.pod#Mojo::Webqq::Plugin::MsgSync)             |99       |已发布      |sjdy521       |实现qq群和irc消息同步
+|[IRCShell](https://metacpan.org/pod/distribution/Mojo-Webqq/doc/Webqq.pod#Mojo::Webqq::Plugin::IRCShell)            |99       |已发布      |sjdy521       |Linux环境下通过irc客户端使用qq
+|[Openqq](https://metacpan.org/pod/distribution/Mojo-Webqq/doc/Webqq.pod#Mojo::Webqq::Plugin::Openqq)              |98       |已发布      |sjdy521       |提供qq发送消息api接口
+|[Perlcode](https://metacpan.org/pod/distribution/Mojo-Webqq/doc/Webqq.pod#Mojo::Webqq::Plugin::Perlcode)            |97       |已发布      |sjdy521       |通过qq消息执行perl代码
+|[Perldoc](https://metacpan.org/pod/distribution/Mojo-Webqq/doc/Webqq.pod#Mojo::Webqq::Plugin::Perldoc)             |96       |已发布      |sjdy521       |通过qq消息查询perl文档
+|[StockInfo](https://metacpan.org/pod/distribution/Mojo-Webqq/doc/Webqq.pod#Mojo::Webqq::Plugin::StockInfo)           |95       |已发布      |shalk         |查询股票信息
+|[ProgramCode](https://metacpan.org/pod/distribution/Mojo-Webqq/doc/Webqq.pod#Mojo::Webqq::Plugin::ProgramCode)         |94       |已发布      |limengyu1990  |通过qq消息执行代码，支持26种语言
+|[Translation](https://metacpan.org/pod/distribution/Mojo-Webqq/doc/Webqq.pod#Mojo::Webqq::Plugin::Translation)         |93       |已发布      |sjdy521       |多国语言翻译功能
+|[MobileInfo](https://metacpan.org/pod/distribution/Mojo-Webqq/doc/Webqq.pod#Mojo::Webqq::Plugin::MobileInfo)          |93       |已发布      |limengyu1990  |手机号码归属地查询
+|[Riddle](https://metacpan.org/pod/distribution/Mojo-Webqq/doc/Webqq.pod#Mojo::Webqq::Plugin::Riddle)              |92       |已发布      |limengyu1990  |输入"猜谜"关键字进行猜谜游戏
+|[GasPrice](https://metacpan.org/pod/distribution/Mojo-Webqq/doc/Webqq.pod#Mojo::Webqq::Plugin::GasPrice)            |91       |已发布      |hyvinlam      |输入"油价"关键字查询油价
+|[KnowledgeBase2](https://metacpan.org/pod/distribution/Mojo-Webqq/doc/Webqq.pod#Mojo::Webqq::Plugin::KnowledgeBase2)       |3        |已发布      |sjdy521       |自定义可编辑问答知识库
+|[KnowledgeBase](https://metacpan.org/pod/distribution/Mojo-Webqq/doc/Webqq.pod#Mojo::Webqq::Plugin::KnowledgeBase)       |2        |已发布      |sjdy521       |通过qq消息自定义问答知识库
+|[FuckDaShen](https://metacpan.org/pod/distribution/Mojo-Webqq/doc/Webqq.pod#Mojo::Webqq::Plugin::FuckDaShen)          |1        |已发布      |sjdy521       |对消息中的"大神"关键词进行鄙视
+|[Qiandao](https://metacpan.org/pod/distribution/Mojo-Webqq/doc/Webqq.pod#Mojo::Webqq::Plugin::Qiandao)          |1        |已发布      |sjdy521       |QQ群每日签到
+|[Pu](https://metacpan.org/pod/distribution/Mojo-Webqq/doc/Webqq.pod#Mojo::Webqq::Plugin::Pu)          |1        |已发布      |bollwarm |周易、占卜、算命、八卦等关键字触发占卜
+|[ZiYue](https://metacpan.org/pod/distribution/Mojo-Webqq/doc/Webqq.pod#Mojo::Webqq::Plugin::ZiYue)      |1       |已发布     |bollwarm |子曰、论语、之乎者也等关键字触发论语语句
+|[PostImgVerifycode](https://metacpan.org/pod/distribution/Mojo-Webqq/doc/Webqq.pod#Mojo::Webqq::Plugin::PostImgVerifycode)   |0        |已发布      |sjdy521       |登录验证码发送到邮箱实现远程登录
+|[PostQRcode](https://metacpan.org/pod/distribution/Mojo-Webqq/doc/Webqq.pod#Mojo::Webqq::Plugin::PostQRcode)          |0        |已发布      |sjdy521       |登录二维码发送到邮箱实现远程扫码
+|[UploadQRcode](https://metacpan.org/pod/distribution/Mojo-Webqq/doc/Webqq.pod#Mojo::Webqq::Plugin::UploadQRcode)          |0        |已发布      |sjdy521       |二维码上传腾讯云存储获得公网访问url
+|[ShowQRcode](https://metacpan.org/pod/distribution/Mojo-Webqq/doc/Webqq.pod#Mojo::Webqq::Plugin::ShowQRcode)          |0        |已发布      |autodataming  |调用系统图片查看程序来示二维码（目前仅支持win）
+|[SmartReply](https://metacpan.org/pod/distribution/Mojo-Webqq/doc/Webqq.pod#Mojo::Webqq::Plugin::SmartReply)          |0        |已发布      |sjdy521       |智能聊天回复
+
+
 ###效果展示
+
+敲一行命令就能启动一个智能聊天机器人，Perl 和你都如此优雅. Enjoy!
+
+    cpanm Mojo::Webqq && perl -MMojo::Webqq -e "Mojo::Webqq->new->load('ShowMsg')->load('SmartReply')->run()"
+
 ```
 [15/09/30 15:11:59] [info] 初始化 smartqq 客户端参数...
 [15/09/30 15:11:59] [info] 检查验证码...
@@ -77,13 +98,19 @@ Mojo-Webqq v1.7.6 [![Build Status](https://travis-ci.org/sjdy521/Mojo-Webqq.svg?
 
 ![IRCShell](screenshot/IRCShell.png)
 
+###IT男装逼利器：如何像黑客一样聊天（图片来自 @動感光波）
+
+![如何像黑客一样聊天](screenshot/How_to_chat_like_a_hacker.jpg)
+
 ###安装方法
 
-推荐使用[cpanm](https://metacpan.org/pod/distribution/App-cpanminus/bin/cpanm)在线安装或升级[Mojo::Webqq](https://metacpan.org/pod/distribution/Mojo-Webqq/doc/Webqq.pod)模块 
+推荐使用[cpanm](https://metacpan.org/pod/distribution/App-cpanminus/bin/cpanm)在线安装或升级[Mojo::Webqq](https://metacpan.org/pod/distribution/Mojo-Webqq/doc/Webqq.pod)模块, 如果使用docker方式请参见[Docker镜像安装及使用方法](Docker.md)
 
 1. *安装perl*
   
     安装之前请先确认下你的系统是否已经安装了Perl，因为除了windows，其他大部分的平台默认都可能已经预装过
+
+    并且你的Perl版本至少5.10.1+，推荐5.14+
 
     [Perl官网下载页面](https://www.perl.org/get.html) 有包含Unix/Linux、Mac OS X、Windows多平台比较全面详细的安装说明
 
@@ -91,14 +118,20 @@ Mojo-Webqq v1.7.6 [![Build Status](https://travis-ci.org/sjdy521/Mojo-Webqq.svg?
 
   |平台   |推荐选择|下载地址
   |-------|--------|-------------|
-  |Windows|1. **StrawberryPerl**<br>2. ActivePerl<br>|[StrawberryPerl下载地址](http://strawberryperl.com/)<br>[ActivePerl下载地址](http://www.activestate.com/activeperl/downloads)|
-  |Linux  |1. **ActivePerl**<br>2. 官方源码<br>3. yum/apt等包管理器<br>4. Mojo-ActivePerl|[ActivePerl下载地址](http://www.activestate.com/activeperl/downloads)<br>[Mojo-ActivePerl下载地址](https://github.com/sjdy521/Mojo-ActivePerl)|
-  |Mac    |1. **ActivePerl**|[ActivePerl下载地址](http://www.activestate.com/activeperl/downloads)
+  |Windows|1. **StrawberryPerl**<br>2. ActivePerl<br>3. **Mojo-StrawberryPerl**|[StrawberryPerl下载地址](http://strawberryperl.com/)<br>[ActivePerl下载地址](http://www.activestate.com/activeperl/downloads)<br>[Mojo-StrawberryPerl下载地址](https://github.com/sjdy521/Mojo-StrawberryPerl)|
+  |Linux  |1. **系统自带**<br>2. **yum/apt等包管理器**<br>3. **官方源码**<br>4. ActivePerl<br>5. Mojo-ActivePerl|[ActivePerl下载地址](http://www.activestate.com/activeperl/downloads)<br>[Mojo-ActivePerl下载地址](https://github.com/sjdy521/Mojo-ActivePerl)|
+  |Mac    |1. **系统自带**<br>2. ActivePerl|[ActivePerl下载地址](http://www.activestate.com/activeperl/downloads)
   
-    注意：[Mojo-ActivePerl](https://github.com/sjdy521/Mojo-ActivePerl)是我基于ActivePerl打包的而成
+    注意：
+    
+    [Mojo-ActivePerl](https://github.com/sjdy521/Mojo-ActivePerl)是我基于ActivePerl打包的而成
   
     已经包含perl-5.22+cpanm+Mojo-Webqq+Mojo-Weixin的完整运行环境，适用于linux x86_64系统，并且系统glibc 2.15+
-
+    
+    [Mojo-StrawberryPerl](https://github.com/sjdy521/Mojo-StrawberryPerl)是网友 **@那谁** 基于StrawberryPerl精简打包而成
+    
+    已经包含perl-5.24+cpanm+Mojo-Webqq+Mojo-Weixin的完整运行环境，适用于windows 32位/64位系统
+    
 2. *安装cpanm包管理工具*（如果系统已经安装了cpanm可以忽略此步骤）
 
     方法a： 通过cpan安装cpanm
@@ -107,11 +140,21 @@ Mojo-Webqq v1.7.6 [![Build Status](https://travis-ci.org/sjdy521/Mojo-Webqq.svg?
     
     方法b： 直接在线安装cpanm
 
-        $ curl -kL http://cpanmin.us | perl - App::cpanminus
+        $ curl -kL https://cpanmin.us | perl - App::cpanminus
+        
+        官方服务器在国外，如果无法访问，可以选择下面的命令：
+        
+        $ curl http://share-10066126.cos.myqcloud.com/cpanm.pl|perl - App::cpanminus
 
 3. *使用cpanm在线安装 Mojo::Webqq 模块*（如果系统已经安装了该模块，执行此步骤会对模块进行升级）
 
-        $ cpanm -v Mojo::Webqq
+        $ cpanm Mojo::Webqq
+    
+    如果安装过程中一直提示下载失败，很可能是因为访问到国外服务器网络比较差
+    
+    这种情况下可以尝试按如下方式手动指定国内的镜像站点
+    
+        $ cpanm --mirror http://mirrors.163.com/cpan/ Mojo::Webqq
 
 4. *安装失败可能有帮助的解决方法*
         
@@ -162,7 +205,6 @@ Mojo-Webqq v1.7.6 [![Build Status](https://travis-ci.org/sjdy521/Mojo-Webqq.svg?
         #$post_api = 'http://xxxx';  #接收到的消息上报接口，如果不需要接收消息上报，可以删除或注释此行
         
         my $client = Mojo::Webqq->new(qq=>$qq);
-        $client->login();
         $client->load("ShowMsg");
         $client->load("Openqq",data=>{listen=>[{host=>$host,port=>$port}], post_api=>$post_api});
         $client->run();
@@ -178,7 +220,7 @@ Mojo-Webqq v1.7.6 [![Build Status](https://travis-ci.org/sjdy521/Mojo-Webqq.svg?
         * About to connect() to 127.0.0.1 port 5000 (#0)
         *   Trying 127.0.0.1...
         * Connected to 127.0.0.1 (127.0.0.1) port 5000 (#0)
-        > GET /openqq/send_message?qq=>xxxxx&content=hello HTTP/1.1
+        > GET /openqq/send_message?qq=xxxxx&content=hello HTTP/1.1
         > User-Agent: curl/7.29.0
         > Host: 127.0.0.1:5000
         > Accept: */*
@@ -193,7 +235,7 @@ Mojo-Webqq v1.7.6 [![Build Status](https://travis-ci.org/sjdy521/Mojo-Webqq.svg?
         
         {"status":"发送成功","msg_id":23910327,"code":0}
     
-    更多接口参数说明参加[Openqq插件使用文档](https://metacpan.org/pod/distribution/Mojo-Webqq/doc/Webqq.pod#Mojo::Webqq::Plugin::Openqq)
+    更多接口参数说明参见[API说明文档](API.md)
     
 3.  *我是一个极客，我只想能够在命令行上通过  IRC 的方式来玩转 QQ 聊天*
 
@@ -218,6 +260,28 @@ Mojo-Webqq v1.7.6 [![Build Status](https://travis-ci.org/sjdy521/Mojo-Webqq.svg?
 
 * [QQ群](http://jq.qq.com/?_wv=1027&k=kjVJzo)
 * [IRC](http://irc.perfi.wang/?channel=#Mojo-Webqq)
+
+###友情链接
+
+*JavaScript*
+* [webqqircd](https://github.com/MaskRay/webqqircd) 用IRC客户端控制WebQQ(SmartQQ)，类似于wechatircd
+* [qqbot](https://github.com/floatinghotpot/qqbot) SmartQQ Robot and API Server, powered by node.js
+* [qqbot](https://github.com/ScienJus/qqbot) 基于SmartQQ（WebQQ）的QQ机器人 / a qq robot based on smartqq(webqq) api
+
+*Python*
+* [SmartQQBot](https://github.com/Yinzo/SmartQQBot) 基于SmartQQ的自动机器人框架
+* [qqbot](https://github.com/pandolia/qqbot) A conversation robot base on Tencent's SmartQQ
+
+*Java*
+* [smartqq](https://github.com/ScienJus/smartqq) SmartQQ（WebQQ）的Api ，你可以用它实现自己的QQ 机器人
+
+###捐赠奖励
+
+可以通过扫描支付宝付款二维码进行捐赠，感谢您的支持和鼓励
+
+![donate](screenshot/donate.jpg)
+
+特别致谢 [那些曾经捐赠的小伙伴们](https://github.com/sjdy521/Donor-Thanks)
 
 ###COPYRIGHT 和 LICENCE
 
