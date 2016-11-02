@@ -5,7 +5,7 @@ Mojo-Webqq v1.8.7 [![Build Status](https://travis-ci.org/sjdy521/Mojo-Webqq.svg?
 
 ###郑重声明
 
-本项目完全遵循网页QQ官方提供的原始聊天功能，不包含任何破解、盗号等行为，本项目完全开源，目的是为了促进技术交流学习，禁止任何商业盈利目的以及一切非法用途传播，否则后果自负
+本项目完全遵循QQ官方提供的原始功能，不包含任何破坏、盗号等行为，本项目完全开源，目的是为了促进技术交流学习，禁止任何对国家、企业、个人等构成危害的非法用途，否则后果自负
 
 ###特色功能
 
@@ -73,7 +73,8 @@ Mojo-Webqq v1.8.7 [![Build Status](https://travis-ci.org/sjdy521/Mojo-Webqq.svg?
 [15/09/30 14:09:20] [群消息] 小灰|PERL学习交流 : Mojo::Webqq不错哦
 [15/09/30 14:10:20] [群消息] 我->PERL学习交流 : 多谢多谢
 ```
-###通过irc客户端在linux终端上使用QQ
+
+####通过irc客户端在linux终端上使用QQ
 
 ```
 
@@ -98,9 +99,11 @@ Mojo-Webqq v1.8.7 [![Build Status](https://travis-ci.org/sjdy521/Mojo-Webqq.svg?
 
 ![IRCShell](screenshot/IRCShell.png)
 
-###IT男装逼利器：如何像黑客一样聊天（图片来自 @動感光波）
+####IT男装逼利器：如何像黑客一样聊天（图片来自 @動感光波）
 
 ![如何像黑客一样聊天](screenshot/How_to_chat_like_a_hacker.jpg)
+
+####更多应用效果 请参见[Mojo-Webqq作品展](Collection.md)
 
 ###安装方法
 
@@ -290,4 +293,3 @@ Copyright (C) 2014 by sjdy521
 This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself, either Perl version 5.10.1 or,
 at your option, any later version of Perl 5 you may have available.
-
