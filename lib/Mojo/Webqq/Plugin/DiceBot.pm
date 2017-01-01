@@ -1,14 +1,16 @@
 package Mojo::Webqq::Plugin::DiceBot;
-use POSIX qw(strftime);
+#use POSIX qw(strftime);
 use Encode;
 use List::Util qw(first);
 use Cwd;
-use POSIX::strftime::GNU;
-use POSIX 'strftime';
+#use POSIX::strftime::GNU;
+#use POSIX 'strftime';
 use Inline "Lua" => <<EOLUA;
 function lua_load(path)
+	print("lua, path=", path)
 	path=path:match(".*/")
 	package.path=path.."luascript/?.lua"
+    package.cpath=path.."luascript/?.dll"
 	a,b=loadfile(path.."/main.lua")
 	print(b,"test from lua", main)
 	a()
@@ -39,12 +41,12 @@ sub call{
 #    my $ban_limit = $data->{ban_limit} || 12;
 #    my $is_need_at = defined $data->{is_need_at}?$data->{is_need_at}:1;
 
-    my $counter = $client->new_counter(id=>'SmartReply',period=>$data->{period} || 600);
-    $client->on(login=>sub{%ban = ();$counter->reset();});
+    #my $counter = $client->new_counter(id=>'DiceBot',period=>$data->{period} || 600);
+    #$client->on(login=>sub{%ban = ();$counter->reset();});
     $client->on(receive_message=>sub{
         my($client,$msg) = @_;
         return if not $msg->allow_plugin;
-#        return if $msg->type !~ /^message|group_message|sess_message$/;
+        return if $msg->type !~ /^message|group_message|discuss_message|sess_message$/;
 #        return if exists $ban{$msg->sender->id};
         my $sender_nick = $msg->sender->displayname;
         my $user_nick = $msg->receiver->displayname;
@@ -54,7 +56,7 @@ sub call{
 #            return if ref $data->{ban_group}  eq "ARRAY" and first {$_=~/^\d+$/?$msg->group->gnumber eq $_:$msg->group->gname eq $_} @{$data->{ban_group}};
 #            return if ref $data->{allow_group}  eq "ARRAY" and !first {$_=~/^\d+$/?$msg->group->gnumber eq $_:$msg->group->gname eq $_} @{$data->{allow_group}};
 #            return if ref $data->{ban_user} eq "ARRAY" and first {$_=~/^\d+$/?$msg->sender->qq eq $_:$sender_nick eq $_} @{$data->{ban_user}};
-            my $limit = $counter->check($msg->group->gid ."|" .$msg->sender->id);
+#           my $limit = $counter->check($msg->group->gid ."|" .$msg->sender->id);
 #            if($is_need_at and $limit >= $ban_limit){
 #                $ban{$msg->sender->id} = 1;
 #                $client->reply_message($msg,"\@$sender_nick " . "您已被列入黑名单，$ban_time秒内提问无视",sub{$_[1]->msg_from("bot")});
@@ -105,16 +107,18 @@ sub call{
 #            $reply = $client->truncate($reply,max_bytes=>500,max_lines=>10) if ($msg->type eq 'group_message' and $data->{is_truncate_reply});
 #            $client->reply_message($msg,$reply,sub{$_[1]->msg_from("bot")}) if $reply;
 #        });
-
-		my $time =strftime("%H:%M:%S",localtime($msg->msg_time));
+#
+        my ($sec,$min,$hour,$mday,$mon,$year,$wday,$yday,$isdst) =
+                                                localtime(time);
+		my $time =sprintf("%02d:%02d:%02d",$hour,$min,$sec);
 		
 		lua_main(sub{
 			my $arg = shift;
-			$client->reply_message($msg,$arg,sub{$_[1]->msg_from("bot")});
-		},$input,$time,$msg->sender->nick);
-		if ($msg->is_at) {
-			$client->reply_message($msg,"en?",sub{$_[1]->msg_from("bot")});
-		}
+			$client->reply_message($msg,$arg,sub{$_[1]->from("bot")});
+		} ,$msg->content, $time ,$msg->sender->displayname);
+#		if ($msg->is_at) {
+#			$client->reply_message($msg,"en?",sub{$_[1]->msg_from("bot")});
+#		}
     });
 }
 1;
