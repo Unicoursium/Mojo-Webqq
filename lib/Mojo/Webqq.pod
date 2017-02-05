@@ -413,8 +413,10 @@ Mojo::Webqq - A Webqq Client Framework base on Mojolicious
     http_debug      #设置该参数，打印调试信息
     keep_cookie     #默认为1，0表示不保存登录cookie，1表示保存登录cookie方便下次直接恢复登录
     disable_color   #默认为0，是否禁用终端彩色打印
-    log_console     #打印到文件的同时也打印到屏幕，方便调试，默认 1
+    ignore_retcode  #对发送消息返回这些状态码不认为发送失败不重试,参数是一个数组引用，默认 [1202,100100]
+                    #设置示例 Mojo::Webqq->new(ignore_retcode=>[1202,100100]);
 
+    log_console     #打印到文件的同时也打印到屏幕，方便调试，默认 1
     log_level       #默认级别为info，可以设置debug|info|warn|error|fatal
     log_path        #默认客户端输出内容打印到STDOUT 设置该参数可以将客户端输出重定向到文件
     log_encoding    #输出日志的编码，默认自动检测，如果出现乱码可以尝试手动设置一下输出编码
@@ -1092,16 +1094,16 @@ send_message()/send_group_message()/send_discuss_message()/send_sess_message()
     $client->load("IRCShell",data=>{
         listen=>[ {host=>"0.0.0.0",port=>6667},], #可选，IRC服务器监听的地址+端口，默认0.0.0.0:6667
         load_friend => 1, #默认是1 是否初始为每个好友生成irc虚拟帐号并加入频道 #我的好友
-        master_irc_user => "你的QQ号码", #用于识别哪个irc用户是你自己
+        master_irc_nick => "你的QQ昵称", #用于识别哪个irc用户是你自己
     });
     #支持的参数包括：
     listen              #监听的地址和端口，数组的形式来支持多个地址
                         # listen=>[ {host=>"127.0.0.1",port=>6667}, {host=>"127.0.0.1",port=>6668}]
                         # 表示监听127.0.0.1:6667和 127.0.0.1:6668两个端口
-    master_irc_user     #和qq匹配的irc user帐号，默认按照和qq号相同的user或者客户端ip是本机地址作为识别规则
+    master_irc_nick     #和qq匹配的irc帐号昵称，默认按照和qq号相同的昵称或者客户端ip是本机地址作为识别规则
     load_friend         #0|1 默认是0 是否初始为每个好友生成irc虚拟帐号并加入频道 #我的好友
-    image_api           #兼容elimage图床api地址，将qq图片转为连接，方便在irc上查看图片，默认没有启用
-                        #推荐依云的elimage http://img.vim-cn.com/
+    upload_api          #图床api地址，将qq图片转为连接，方便在irc上查看图片
+                        #默认采用的是 https://sm.ms/api/upload 接口文档 https://sm.ms/doc/
 
 当设置了 load_friend =>1 参数，qq好友会默认加入到irc的 '#我的好友' 频道中，可能影响加载速度
 
@@ -1371,14 +1373,6 @@ QQ群每日签到插件
     附件：webqq_qrcode_xxxx.png
     正文：请使用手机QQ扫描附件中的二维码
 
-=head2 Mojo::Webqq::Plugin::PostQRcodeToTelegram
-
-登录过程如果需要手机扫描二维码，会将二维码通过Telegram Bot发至指定账户或频道或群组，再通过手机QQ扫描二维码
-
-    $client->load("PostQRcodeToTelegram",data=>{
-        api_key    =>  'xxxx', #Telegram Bot的API Key
-        chat_id    =>  'xxxx', #接收信息的chat_id
-    });
 
 =head2 Mojo::Webqq::Plugin::PostImgVerifycode
 
@@ -1402,6 +1396,20 @@ QQ群每日签到插件
     主题：QQ帐号 xxxx 登录验证码
     附件：webqq_img_verfiy_xxxx.jpg
     正文：请点击以下链接提交验证码：http://xxx.xxx.xxx.xxx:xxxx/check_code
+
+=head2 Mojo::Webqq::Plugin::GCM
+
+接收消息通过谷歌提供的GCM接口发送到android手机
+
+    $client->load("GCM",data=>{
+        api_url         => 'https://gcm-http.googleapis.com/gcm/send',
+        api_key         =>'xxx', #需要向谷歌申请
+        registration_ids=>["xxx"],#android设备的注册id
+        allow_group     =>["允许推送消息的群名称1","允许推送消息的群名称2","或者群号码"],
+        ban_group       =>["禁止推送消息的群名称","或者群号码"],
+        allow_dicuss    =>["允许推送消息的讨论组名称1","允许推送消息的讨论组名称2"],
+        ban_discuss     =>["禁止推送消息的讨论组名称",],
+    });
 
 =head2 Mojo::Webqq::Plugin::SmartReply
 

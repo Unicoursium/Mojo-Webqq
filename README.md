@@ -1,4 +1,4 @@
-Mojo-Webqq v2.0.1 [![Build Status](https://travis-ci.org/sjdy521/Mojo-Webqq.svg?branch=master)](https://travis-ci.org/sjdy521/Mojo-Webqq) [![Join the chat at https://gitter.im/sjdy521/Mojo-Webqq](https://badges.gitter.im/sjdy521/Mojo-Webqq.svg)](https://gitter.im/sjdy521/Mojo-Webqq?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge) [![API列表](https://img.shields.io/badge/doc-API%E5%88%97%E8%A1%A8-brightgreen.svg)](API.md) [![QQ群-498880156](https://img.shields.io/badge/QQ%E7%BE%A4-498880156-blue.svg)](http://jq.qq.com/?_wv=1027&k=kjVJzo) [![IRC](https://img.shields.io/badge/IRC-%E5%AE%98%E6%96%B9%E9%A2%91%E9%81%93-yellow.svg)](http://irc.perfi.wang/?channel=#Mojo-Webqq)
+Mojo-Webqq v2.0.5 [![Build Status](https://travis-ci.org/sjdy521/Mojo-Webqq.svg?branch=master)](https://travis-ci.org/sjdy521/Mojo-Webqq) [![Join the chat at https://gitter.im/sjdy521/Mojo-Webqq](https://badges.gitter.im/sjdy521/Mojo-Webqq.svg)](https://gitter.im/sjdy521/Mojo-Webqq?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge) [![API列表](https://img.shields.io/badge/doc-API%E5%88%97%E8%A1%A8-brightgreen.svg)](API.md) [![QQ群-498880156](https://img.shields.io/badge/QQ%E7%BE%A4-498880156-blue.svg)](http://jq.qq.com/?_wv=1027&k=kjVJzo) [![IRC](https://img.shields.io/badge/IRC-%E5%AE%98%E6%96%B9%E9%A2%91%E9%81%93-yellow.svg)](http://irc.perfi.wang/?channel=#Mojo-Webqq)
 ========================
 
 使用Perl语言编写的Smartqq客户端框架，基于Mojolicious，要求Perl版本5.10+，可通过插件提供基于HTTP协议的api接口供其他语言或系统调用
@@ -22,28 +22,19 @@ Mojo-Webqq v2.0.1 [![Build Status](https://travis-ci.org/sjdy521/Mojo-Webqq.svg?
 |:-------------------|:--------|:-----------|:-------------|:----------------------------
 |[ShowMsg](https://metacpan.org/pod/distribution/Mojo-Webqq/doc/Webqq.pod#Mojo::Webqq::Plugin::ShowMsg)             |100      |已发布      |sjdy521       |打印客户端接收和发送的消息
 |[GroupManage](https://metacpan.org/pod/distribution/Mojo-Webqq/doc/Webqq.pod#Mojo::Webqq::Plugin::GroupManage)         |100      |已发布      |sjdy521       |群管理，入群欢迎、限制发图频率等
-|[MsgSync](https://metacpan.org/pod/distribution/Mojo-Webqq/doc/Webqq.pod#Mojo::Webqq::Plugin::MsgSync)             |99       |已发布      |sjdy521       |实现qq群和irc消息同步
 |[IRCShell](https://metacpan.org/pod/distribution/Mojo-Webqq/doc/Webqq.pod#Mojo::Webqq::Plugin::IRCShell)            |99       |已发布      |sjdy521       |Linux环境下通过irc客户端使用qq
 |[Openqq](https://metacpan.org/pod/distribution/Mojo-Webqq/doc/Webqq.pod#Mojo::Webqq::Plugin::Openqq)              |98       |已发布      |sjdy521       |提供qq发送消息api接口
 |[Perlcode](https://metacpan.org/pod/distribution/Mojo-Webqq/doc/Webqq.pod#Mojo::Webqq::Plugin::Perlcode)            |97       |已发布      |sjdy521       |通过qq消息执行perl代码
 |[Perldoc](https://metacpan.org/pod/distribution/Mojo-Webqq/doc/Webqq.pod#Mojo::Webqq::Plugin::Perldoc)             |96       |已发布      |sjdy521       |通过qq消息查询perl文档
-|[StockInfo](https://metacpan.org/pod/distribution/Mojo-Webqq/doc/Webqq.pod#Mojo::Webqq::Plugin::StockInfo)           |95       |已发布      |shalk         |查询股票信息
-|[ProgramCode](https://metacpan.org/pod/distribution/Mojo-Webqq/doc/Webqq.pod#Mojo::Webqq::Plugin::ProgramCode)         |94       |已发布      |limengyu1990  |通过qq消息执行代码，支持26种语言
-|[Translation](https://metacpan.org/pod/distribution/Mojo-Webqq/doc/Webqq.pod#Mojo::Webqq::Plugin::Translation)         |93       |已发布      |sjdy521       |多国语言翻译功能
-|[MobileInfo](https://metacpan.org/pod/distribution/Mojo-Webqq/doc/Webqq.pod#Mojo::Webqq::Plugin::MobileInfo)          |93       |已发布      |limengyu1990  |手机号码归属地查询
-|[Riddle](https://metacpan.org/pod/distribution/Mojo-Webqq/doc/Webqq.pod#Mojo::Webqq::Plugin::Riddle)              |92       |已发布      |limengyu1990  |输入"猜谜"关键字进行猜谜游戏
-|[GasPrice](https://metacpan.org/pod/distribution/Mojo-Webqq/doc/Webqq.pod#Mojo::Webqq::Plugin::GasPrice)            |91       |已发布      |hyvinlam      |输入"油价"关键字查询油价
+|[Translation](https://metacpan.org/pod/distribution/Mojo-Webqq/doc/Webqq.pod#Mojo::Webqq::Plugin::Translation)         |93       |已发布| sjdy521 | 多国语言翻译功能
 |[KnowledgeBase](https://metacpan.org/pod/distribution/Mojo-Webqq/doc/Webqq.pod#Mojo::Webqq::Plugin::KnowledgeBase)       |3        |已发布      |sjdy521       |自定义可编辑问答知识库
-|[FuckDaShen](https://metacpan.org/pod/distribution/Mojo-Webqq/doc/Webqq.pod#Mojo::Webqq::Plugin::FuckDaShen)          |1        |已发布      |sjdy521       |对消息中的"大神"关键词进行鄙视
 |[Qiandao](https://metacpan.org/pod/distribution/Mojo-Webqq/doc/Webqq.pod#Mojo::Webqq::Plugin::Qiandao)          |1        |已发布      |sjdy521       |QQ群每日签到
-|[Pu](https://metacpan.org/pod/distribution/Mojo-Webqq/doc/Webqq.pod#Mojo::Webqq::Plugin::Pu)          |1        |已发布      |bollwarm |周易、占卜、算命、八卦等关键字触发占卜
-|[ZiYue](https://metacpan.org/pod/distribution/Mojo-Webqq/doc/Webqq.pod#Mojo::Webqq::Plugin::ZiYue)      |1       |已发布     |bollwarm |子曰、论语、之乎者也等关键字触发论语语句
-|[PostImgVerifycode](https://metacpan.org/pod/distribution/Mojo-Webqq/doc/Webqq.pod#Mojo::Webqq::Plugin::PostImgVerifycode)   |0        |已发布      |sjdy521       |登录验证码发送到邮箱实现远程登录
 |[PostQRcode](https://metacpan.org/pod/distribution/Mojo-Webqq/doc/Webqq.pod#Mojo::Webqq::Plugin::PostQRcode)          |0        |已发布      |sjdy521       |登录二维码发送到邮箱实现远程扫码
 |[UploadQRcode](https://metacpan.org/pod/distribution/Mojo-Webqq/doc/Webqq.pod#Mojo::Webqq::Plugin::UploadQRcode)          |0        |已发布      |sjdy521       |二维码上传图床获得公网访问url
 |[ShowQRcode](https://metacpan.org/pod/distribution/Mojo-Webqq/doc/Webqq.pod#Mojo::Webqq::Plugin::ShowQRcode)          |0        |已发布      |autodataming  |调用系统图片查看程序来示二维码（目前仅支持win）
-|[SmartReply](https://metacpan.org/pod/distribution/Mojo-Webqq/doc/Webqq.pod#Mojo::Webqq::Plugin::SmartReply)          |0        |已发布      |sjdy521       |智能聊天回复
+|[SmartReply](https://metacpan.org/pod/distribution/Mojo-Webqq/doc/Webqq.pod#Mojo::Webqq::Plugin::SmartReply)          |0        |已发布      |sjdy521       |智能聊天回复
 
+更多插件参考[完整插件列表](Plugin.md)
 
 ###效果展示
 
@@ -214,12 +205,12 @@ Mojo-Webqq v2.0.1 [![Build Status](https://travis-ci.org/sjdy521/Mojo-Webqq.svg?
     
     发送好友消息的接口调用示例
     
-        http://127.0.0.1:5000/openqq/send_message?qq=xxxxx&content=hello
+        http://127.0.0.1:5000/openqq/send_friend_message?uid=xxxxx&content=hello
         
         * About to connect() to 127.0.0.1 port 5000 (#0)
         *   Trying 127.0.0.1...
         * Connected to 127.0.0.1 (127.0.0.1) port 5000 (#0)
-        > GET /openqq/send_message?qq=xxxxx&content=hello HTTP/1.1
+        > GET /openqq/send_friend_message?uid==xxxxx&content=hello HTTP/1.1
         > User-Agent: curl/7.29.0
         > Host: 127.0.0.1:5000
         > Accept: */*

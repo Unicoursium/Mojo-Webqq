@@ -40,14 +40,9 @@ sub stop{
     return if $self->is_stop;
     $self->is_stop(1);
     $self->state('stop');
+    $self->emit("stop");
     $self->info("客户端停止运行");
     CORE::exit;
-}
-sub exit{
-    my $self = shift;  
-    my $code = shift;
-    $self->state('stop');
-    exit(defined $code?$code+0:0);
 }
 sub ready{
     my $self = shift;
@@ -238,7 +233,7 @@ sub login {
     }
     else{
         $self->qrcode_count(0);
-        $self->info("帐号(" . $self->account . ")登录成功");
+        $self->info("帐号(" .( $self->uid // $self->account) . ")登录成功");
         $self->login_type eq "qrlogin"?$self->clean_qrcode():$self->clean_verifycode();
         $self->state('updating');
         $self->update_user;
@@ -450,4 +445,9 @@ sub save_state{
     $self->warn("客户端状态信息保存失败：$@") if $@;
 }
 
+sub is_load_plugin {
+    my $self = shift;
+    my $plugin = shift;
+    return exists $self->plugins->{ substr($plugin,0,1) eq '+'?$plugin:"Mojo::Webqq::Plugin::$plugin" };
+}
 1;

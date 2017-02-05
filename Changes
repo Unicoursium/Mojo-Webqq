@@ -1,3 +1,40 @@
+2017-02-03 Mojo::Webqq v2.0.5
+1）帐号登录成功日志中包含真实的登录QQ号
+2）FAQ中添加修复screen乱码的问题的解决方案
+3）新增 is_load_plugin 方法 检测客户端是否加载某个插件
+4）GCM插件支持推送事件，bug修复，无视GCM插件设置allow_group=>[]的情况
+5）IRCShell插件完善
+    插件参数master_irc_user更名为master_irc_nick
+    插件参数image_api更名为upload_api
+    上传api替换为https://sm.ms/api/upload接口
+    新增群组、群组名称修改irc上也能够自动同步
+6）完善MakeFile.PL文件
+
+2017-01-16 Mojo::Webqq v2.0.4
+1）GCM插件完善
+2）Dockerfile完善，充分利用cache机制，加快build速度，设置镜像为北京时区
+
+2017-01-10 Mojo::Webqq v2.0.3
+1）对于请求失败重试，debug日志增加了n/m的重试过程，例如:
+[17/01/11 10:08:25] [warn] http://127.0.0.1:80/ 请求(0/2)失败: 404 Not Found
+[17/01/11 10:08:25] [warn] http://127.0.0.1:80/ 请求(1/2)失败: 404 Not Found
+[17/01/11 10:08:25] [warn] http://127.0.0.1:80/ 请求(2/2)失败: 404 Not Found
+2）新增GCM插件，接收消息通过谷歌提供的GCM接口发送到android手机 感谢 @周俊 支持
+3）发送失败默认重试次数从5次改为3次
+4）增加ignore_retcode参数对发送消息返回这些状态码不认为发送失败，不重试，解决消息重复发送多次的问题
+5）基于Docker Hub实现自动化集成
+6）适配新版本Mojolicious的改动
+
+2017-01-10 Mojo::Webqq v2.0.2
+1）取消群名片可以使用空串
+2）加载了UploadQRcode插件之后，Openqq插件input_qrcode事件上报也会带上上传的二维码url
+3）新增插件 PostQRcodeToTelegram
+4）压缩或删除一些图片，减少这个项目的体积
+5）Openqq插件auth认证失败时返回json格式数据而非原来的文本错误信息
+6）修复客户端正常调用->stop() 退出时无法清理临时文件的bug
+   修复客户端正常调用->stop() 退出时无法正常上报事件的bug
+   修复ctrl+c时客户端报错 Mojo::IOLoop already running at /usr/local/share/perl5/Mojo/UserAgent.pm line 60
+
 2017-01-05 Mojo::Webqq v2.0.1
 1）增加PostQRcodeToTelegram插件
 2）开启http_debug后，debug日志不打印http post上传文件的二进制内容
